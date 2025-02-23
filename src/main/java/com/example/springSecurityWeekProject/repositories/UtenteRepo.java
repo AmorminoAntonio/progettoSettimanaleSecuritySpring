@@ -12,4 +12,8 @@ public interface UtenteRepo extends JpaRepository<Utente, Long> {
     Optional<Utente> findByUsername(String username);
 
     Optional<Utente> findByRuoloUtente(Roles ruoloUtente);
+
+    boolean existsByUsername(String username);
+
+    boolean existsByEmail(String email);
 }

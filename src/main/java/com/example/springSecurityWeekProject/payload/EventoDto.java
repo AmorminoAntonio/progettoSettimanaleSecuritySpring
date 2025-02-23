@@ -1,6 +1,8 @@
 package com.example.springSecurityWeekProject.payload;
 
 import com.example.springSecurityWeekProject.entities.Utente;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
@@ -20,14 +22,13 @@ public class EventoDto {
     @NotBlank(message = "questo campo è obbligatorio")
     private String luogoEvento;
 
+    @JsonProperty("posti_disponibili")
     @NotBlank(message = "questo campo è obbligatorio")
+    @Min(value = 1)
     private int numeroPostiDisponibili;
 
     @NotBlank(message = "questo campo è obbligatorio")
-    private Utente creatoreEvento;
-
-    @NotBlank(message = "questo campo è obbligatorio")
-    private Utente utentePerEvento;
+    private long creatoreEvento_id;
 }
 
 // da modificare i not blank message ⚠️⚠️⚠️⚠️⚠️

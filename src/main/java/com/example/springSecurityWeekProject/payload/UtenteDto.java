@@ -1,5 +1,6 @@
 package com.example.springSecurityWeekProject.payload;
 
+import com.example.springSecurityWeekProject.entities.Ruolo;
 import com.example.springSecurityWeekProject.enumRole.Roles;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -20,7 +21,10 @@ public class UtenteDto {
     @NotBlank(message = "questo campo è obbligatorio")
     private String password;
 
-    private Roles ruoloUtente;
+    @NotBlank(message = "questo campo è obbligatorio")
+    private String email;
+
+    private Ruolo ruolo;
 }
 
 // da modificare i not blank message ⚠️⚠️⚠️⚠️⚠️

@@ -45,23 +45,6 @@ public class EventoService {
     }
 
 
-    public void aggiornaEvento(EventoDto eventoDto, long id) {
-        Optional<Evento> eventoTrovato = eventoRepo.findById(id);
-
-        if (eventoTrovato.isPresent()) {
-            Evento evento = eventoTrovato.get();
-            evento.setNomeEvento(eventoDto.getNomeEvento());
-            evento.setDataEvento(eventoDto.getDataEvento());
-            evento.setDescrizioneEvento(eventoDto.getDescrizioneEvento());
-            evento.setLuogoEvento(eventoDto.getLuogoEvento());
-            evento.setNumeroPostiDisponibili(eventoDto.getNumeroPostiDisponibili());
-            evento.setCreatoreEvento(eventoDto.getCreatoreEvento());
-            eventoRepo.save(evento);
-        } else {
-            throw new NotFoundException("Errore nella modifica dell'evento inserito. Evento non trovato!");
-        }
-    }
-
 
     public String rimuoviEvento(long id) {
         Optional<Evento> eventoTrovato = eventoRepo.findById(id);
