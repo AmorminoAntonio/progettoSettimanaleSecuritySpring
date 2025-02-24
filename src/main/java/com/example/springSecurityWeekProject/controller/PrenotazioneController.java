@@ -1,5 +1,4 @@
-package com.example.springSecurityWeekProject.controller;
-
+package com.example.springSecurityWeekProject.controllers;
 
 import com.example.springSecurityWeekProject.payload.PrenotazioneDto;
 import com.example.springSecurityWeekProject.services.PrenotazioneService;

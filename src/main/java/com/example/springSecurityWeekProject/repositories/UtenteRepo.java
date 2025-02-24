@@ -11,9 +11,12 @@ import java.util.Optional;
 public interface UtenteRepo extends JpaRepository<Utente, Long> {
     Optional<Utente> findByUsername(String username);
 
-    Optional<Utente> findByRuoloUtente(Roles ruoloUtente);
+    // x la login
+    boolean existsByUsernameAndPassword(String username, String password);
 
+    // per visualizzare alla creazione se l'username è libero (quindi se è presente o no nel db)
     boolean existsByUsername(String username);
 
+    // per visualizzare alla creazione se la mail è già presente o meno sul db
     boolean existsByEmail(String email);
 }

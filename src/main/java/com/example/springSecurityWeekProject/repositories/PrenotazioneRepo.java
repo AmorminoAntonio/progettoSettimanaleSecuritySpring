@@ -11,9 +11,7 @@ import java.util.Optional;
 
 @Repository
 public interface PrenotazioneRepo extends JpaRepository<Prenotazione, Long> {
-    Optional<Prenotazione> findByUtentePrenotazione(Utente utente);
-
-    Optional<Prenotazione> findByEventoPrenotato(Evento evento);
+    Optional<Prenotazione> findByUtente(Utente utente);
 
     Optional<Prenotazione> findByDataPrenotazione(LocalDate dataPrenotazione);
 }

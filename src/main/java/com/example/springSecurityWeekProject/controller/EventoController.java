@@ -1,4 +1,4 @@
-package com.example.springSecurityWeekProject.controller;
+package com.example.springSecurityWeekProject.controllers;
 
 import com.example.springSecurityWeekProject.payload.EventoDto;
 import com.example.springSecurityWeekProject.services.EventoService;
@@ -57,3 +57,5 @@ public class EventoController {
         return new ResponseEntity<>(eventoService.rimuoviEvento(id), HttpStatus.OK);
     }
 }
+
+

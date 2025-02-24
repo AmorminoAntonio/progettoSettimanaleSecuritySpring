@@ -1,6 +1,6 @@
 package com.example.springSecurityWeekProject.entities;
 
-import com.example.springSecurityWeekProject.enumerated.Roles;
+import com.example.springSecurityWeekProject.enumRole.Roles;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,12 +28,14 @@ public class Utente {
     @Column(nullable = false, unique = true)
     private String username;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String password;
 
-    @Column(nullable = false)
-    @Enumerated(EnumType.STRING)
-    private Roles ruoloUtente;
+    @Column(nullable = false, unique = true)
+    private String email;
+
+    @ManyToOne
+    private Ruolo ruolo;
 
     @OneToMany(mappedBy = "evento_id")
     private List<Evento> eventoList;
