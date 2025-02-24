@@ -1,30 +1,24 @@
 package com.example.springSecurityWeekProject.payload;
 
-import com.example.springSecurityWeekProject.entities.Ruolo;
-import com.example.springSecurityWeekProject.enumRole.Roles;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 @Data
 public class UtenteDto {
-    @NotBlank(message = "questo campo è obbligatorio")
+    @NotBlank
     private String nome;
-
-    @NotBlank(message = "questo campo è obbligatorio")
+    @NotBlank
     private String cognome;
-
-    @NotBlank(message = "questo campo è obbligatorio")
+    @NotBlank
+    private String email;
+    @NotBlank
     private String username;
-
-    @NotBlank(message = "questo campo è obbligatorio")
+    @NotBlank
+    @Size(min = 6, max = 18)
     private String password;
 
-    @NotBlank(message = "questo campo è obbligatorio")
-    private String email;
-
-    private Ruolo ruolo;
+    private String ruolo;
 }
 
 // da modificare i not blank message ⚠️⚠️⚠️⚠️⚠️

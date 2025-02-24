@@ -10,7 +10,7 @@ import java.util.Optional;
 
 @Repository
 public interface EventoRepo extends JpaRepository<Evento, Long> {
-    Optional<Evento> findByLuogoEvento(String luogoEvento);
+    Optional<Evento> findByLuogo(String luogo);
 
     Optional<Evento> findByDataEvento(LocalDate dataEvento);
 }

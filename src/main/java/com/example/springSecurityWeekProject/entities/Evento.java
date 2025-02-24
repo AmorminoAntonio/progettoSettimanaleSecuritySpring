@@ -6,40 +6,37 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
-@Entity(name = "eventi")
-@AllArgsConstructor
-@NoArgsConstructor
+
+@Entity
 @Data
-
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "eventi")
 public class Evento {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long evento_id;
+    private Long id_evento;
 
     @Column(nullable = false)
     private String nomeEvento;
 
-    @Column
-    private String descrizioneEvento;
+    @Column(nullable = true)
+    private String descrizione;
 
     @Column(nullable = false)
     private LocalDate dataEvento;
 
     @Column(nullable = false)
-    private String luogoEvento;
+    private String luogo;
 
     @Column(nullable = false)
-    private int numeroPostiDisponibili;
+    private String città;
+
+    @Column(nullable = false)
+    private int capacita;
 
     @ManyToOne
-    @JoinColumn
-    private List<Utente> listaUtentiEvento;
-
-    @ManyToOne
-    @JoinColumn(name = "creatore_evento_id")
-    private Utente creatoreEvento;
+    @JoinColumn(name = "organizzatore_id")
+    private Utente organizzatore;
 }

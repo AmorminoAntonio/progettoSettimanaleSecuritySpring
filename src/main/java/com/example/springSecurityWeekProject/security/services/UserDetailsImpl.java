@@ -1,7 +1,8 @@
+/*
 package com.example.springSecurityWeekProject.security.services;
 
-import com.example.springSecurityWeekProject.entities.Ruolo;
 import com.example.springSecurityWeekProject.entities.Utente;
+import com.example.springSecurityWeekProject.enumRole.Roles;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,7 +25,7 @@ public class UserDetailsImpl implements UserDetails {
 
     @JsonIgnore
     private String password;
-    private Ruolo ruolo;
+    private Roles ruolo;
 
 
     public static UserDetailsImpl costruisciDettagli(Utente user) {
@@ -35,7 +36,7 @@ public class UserDetailsImpl implements UserDetails {
     // da modificare tramite visione della repo di EDO
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(ruolo.getTipoRuolo().name()));
+        return List.of(new SimpleGrantedAuthority(ruolo.toString()));
     }
 
     @Override
@@ -68,3 +69,4 @@ public class UserDetailsImpl implements UserDetails {
         return true;
     }
 }
+*/

@@ -27,7 +27,7 @@ public class EventoService {
     @Autowired
     UtenteRepo utenteRepo;
 
-    public String inserisciEvento(EventoDto eventoDto) {
+    /*public String inserisciEvento(EventoDto eventoDto) {
         Evento evento = dto_entity(eventoDto);
         evento = eventoRepo.save(evento);
         return "nuovo evento inserito: " + evento;
@@ -73,33 +73,12 @@ public class EventoService {
         Optional<Utente> utente = utenteRepo.findById(utenteId);
         if (evento.isPresent() && utente.isPresent()) {
             Evento eventoDaSalvare = evento.get();
-            eventoDaSalvare.setUtentePerEvento(utente.get());
+            eventoDaSalvare.setListaUtentiEvento(utente);
             eventoRepo.save(eventoDaSalvare);
         } else {
             throw new NotFoundException("Evento o Utente non presenti nel DB !");
         }
-    }
+    }*/
 
-    public Evento dto_entity(EventoDto eventoDto) {
-        Evento evento = new Evento();
-        evento.setNomeEvento(eventoDto.getNomeEvento());
-        evento.setDataEvento(eventoDto.getDataEvento());
-        evento.setDescrizioneEvento(eventoDto.getDescrizioneEvento());
-        evento.setLuogoEvento(eventoDto.getLuogoEvento());
-        evento.setNumeroPostiDisponibili(eventoDto.getNumeroPostiDisponibili());
-        evento.setCreatoreEvento(eventoDto.getCreatoreEvento());
-        return evento;
-    }
 
-    // travaso ENTITY ---> DTO
-    public EventoDto entity_dto(Evento evento) {
-        EventoDto eventoDto = new EventoDto();
-        eventoDto.setNomeEvento(evento.getNomeEvento());
-        eventoDto.setDataEvento(evento.getDataEvento());
-        eventoDto.setDescrizioneEvento(evento.getDescrizioneEvento());
-        eventoDto.setLuogoEvento(evento.getLuogoEvento());
-        eventoDto.setNumeroPostiDisponibili(evento.getNumeroPostiDisponibili());
-        eventoDto.setCreatoreEvento(evento.getCreatoreEvento());
-        return eventoDto;
-    }
 }

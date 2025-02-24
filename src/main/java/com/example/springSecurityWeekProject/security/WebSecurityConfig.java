@@ -1,3 +1,4 @@
+/*
 package com.example.springSecurityWeekProject.security;
 
 
@@ -50,7 +51,6 @@ public class WebSecurityConfig {
         return auth;
     }
 
-
     // Gestore csrf
     // Andiamo a impostare il nostro gestore delle autorizzazioni KO
     // Gestione della sessione
@@ -70,3 +70,4 @@ public class WebSecurityConfig {
     }
 
 }
+*/

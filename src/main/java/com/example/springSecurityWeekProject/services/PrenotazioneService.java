@@ -22,9 +22,9 @@ public class PrenotazioneService {
     @Autowired
     PrenotazioneRepo prenotazioneRepo;
 
-    public String inserisciPrenotazione(PrenotazioneDto prenotazioneDto) {
+  /*  public String inserisciPrenotazione(PrenotazioneDto prenotazioneDto) {
         Prenotazione prenotazione = dto_entity(prenotazioneDto);
-        prenotazioneRepo.save(prenotazione);
+        prenotazione = prenotazioneRepo.save(prenotazione);
         return "prenotazione creata con successo" + prenotazione;
     }
 
@@ -91,6 +91,6 @@ public class PrenotazioneService {
         prenotazioneDto.setDataPrenotazione(prenotazione.getDataPrenotazione());
         prenotazioneDto.setEventoPrenotato(prenotazione.getEventoPrenotato());
         return prenotazioneDto;
-    }
+    }*/
 
 }

@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Entity(name = "utenti")
 @Data
@@ -35,11 +36,12 @@ public class Utente {
     private String email;
 
     @ManyToOne
-    private Ruolo ruolo;
+    @JoinColumn(name = "role_id")
+    private Role ruolo;
 
-    @OneToMany(mappedBy = "evento_id")
+    @OneToMany(mappedBy = "id_evento")
     private List<Evento> eventoList;
 
-    @OneToMany(mappedBy = "prenotazione_id")
+    @OneToMany(mappedBy = "id_prenotazione")
     private List<Prenotazione> prenotazioneList;
 }

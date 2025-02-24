@@ -1,3 +1,4 @@
+/*
 package com.example.springSecurityWeekProject.security.jwt;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -41,3 +42,4 @@ public class AuthEntryPoint implements AuthenticationEntryPoint {
     }
 }
 
+*/

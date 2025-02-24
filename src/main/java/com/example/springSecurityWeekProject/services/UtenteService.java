@@ -5,7 +5,6 @@ import com.example.springSecurityWeekProject.exceptions.EmailDuplicated;
 import com.example.springSecurityWeekProject.exceptions.NotFoundException;
 import com.example.springSecurityWeekProject.exceptions.UsernameDuplicated;
 import com.example.springSecurityWeekProject.payload.UtenteDto;
-import com.example.springSecurityWeekProject.payload.request.RegistrazioneRequest;
 import com.example.springSecurityWeekProject.repositories.RuoloRepo;
 import com.example.springSecurityWeekProject.repositories.UtenteRepo;
 import jakarta.transaction.Transactional;
@@ -14,10 +13,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
 
 
 @Service
@@ -29,8 +28,8 @@ public class UtenteService {
     @Autowired
     RuoloRepo ruoloRepo;
 
-    public String inserisciUtente(RegistrazioneRequest registrazioneRequest) {
-        Utente user = dto_entity(registrazioneRequest);
+    /*public String inserisciUtente(UtenteDto utenteDto) {
+        Utente user = dto_entity(utenteDto);
         user = utenteRepo.save(user);
         return "nuovo utente inserito: " + user;
     }
@@ -104,27 +103,8 @@ public class UtenteService {
             listaDto.add(dto);
         }
         return new PageImpl<>(listaDto);
-    }
+    }*/
 
 
-    public Utente dto_entity(UtenteDto utenteDto) {
-        Utente user = new Utente();
-        user.setNome(utenteDto.getNome());
-        user.setCognome(utenteDto.getCognome());
-        user.setUsername(utenteDto.getUsername());
-        user.setPassword(utenteDto.getPassword());
-        user.setRuolo(utenteDto.getRuolo());
-        return user;
-    }
 
-    // travaso ENTITY ---> DTO
-    public UtenteDto entity_dto(Utente utente) {
-        UtenteDto userDto = new UtenteDto();
-        userDto.setNome(utente.getNome());
-        userDto.setCognome(utente.getCognome());
-        userDto.setUsername(utente.getUsername());
-        userDto.setPassword(utente.getPassword());
-        userDto.setRuolo(utente.getRuolo());
-        return userDto;
-    }
 }

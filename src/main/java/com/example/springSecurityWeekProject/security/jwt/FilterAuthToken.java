@@ -1,3 +1,4 @@
+/*
 package com.example.springSecurityWeekProject.security.jwt;
 
 import com.example.springSecurityWeekProject.security.services.UserDetailsServiceImpl;
@@ -74,3 +75,4 @@ public class FilterAuthToken extends OncePerRequestFilter {
 
     }
 }
+*/
