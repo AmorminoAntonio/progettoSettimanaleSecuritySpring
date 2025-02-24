@@ -35,8 +35,8 @@ public class Evento {
     @Column(nullable = false)
     private int numeroPostiDisponibili;
 
-    @ManyToOne
-    @JoinColumn
+    @OneToMany
+    @JoinColumn(name = "evento_id")
     private List<Utente> listaUtentiEvento;
 
     @ManyToOne

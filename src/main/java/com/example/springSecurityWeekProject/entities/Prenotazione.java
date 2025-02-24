@@ -1,6 +1,6 @@
 package com.example.springSecurityWeekProject.entities;
 
-import com.example.springSecurityWeekProject.enumRole.StatusType;
+import com.example.springSecurityWeekProject.enumerated.StatusType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

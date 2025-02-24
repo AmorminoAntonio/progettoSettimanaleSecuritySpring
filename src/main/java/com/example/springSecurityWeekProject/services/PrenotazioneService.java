@@ -44,9 +44,9 @@ public class PrenotazioneService {
 
         if (prenotazioneTrovata.isPresent()) {
             Prenotazione prenotazione = prenotazioneTrovata.get();
-            prenotazione.setUtentePrenotazione(prenotazioneDto.getUtentePrenotazione());
+            prenotazione.setUtente(prenotazioneDto.getUtentePrenotazione());
             prenotazione.setDataPrenotazione(prenotazioneDto.getDataPrenotazione());
-            prenotazione.setEventoPrenotato(prenotazioneDto.getEventoPrenotato());
+            prenotazione.setEvento(prenotazioneDto.getEventoPrenotato());
             prenotazioneRepo.save(prenotazione);
             return "Prenotazione dopo modifica: " + prenotazione + "\n" + "Prenotazione modificata correttamente! ";
         } else {
@@ -78,18 +78,18 @@ public class PrenotazioneService {
 
     public Prenotazione dto_entity(PrenotazioneDto prenotazioneDto) {
         Prenotazione prenotazione = new Prenotazione();
-        prenotazione.setUtentePrenotazione(prenotazioneDto.getUtentePrenotazione());
+        prenotazione.setUtente(prenotazioneDto.getUtentePrenotazione());
         prenotazione.setDataPrenotazione(prenotazioneDto.getDataPrenotazione());
-        prenotazione.setEventoPrenotato(prenotazioneDto.getEventoPrenotato());
+        prenotazione.setEvento(prenotazioneDto.getEventoPrenotato());
         return prenotazione;
     }
 
     // travaso ENTITY ---> DTO
     public PrenotazioneDto entity_dto(Prenotazione prenotazione) {
         PrenotazioneDto prenotazioneDto = new PrenotazioneDto();
-        prenotazioneDto.setUtentePrenotazione(prenotazione.getUtentePrenotazione());
+        prenotazioneDto.setUtentePrenotazione(prenotazione.getUtente());
         prenotazioneDto.setDataPrenotazione(prenotazione.getDataPrenotazione());
-        prenotazioneDto.setEventoPrenotato(prenotazione.getEventoPrenotato());
+        prenotazioneDto.setEventoPrenotato(prenotazione.getEvento());
         return prenotazioneDto;
     }
 

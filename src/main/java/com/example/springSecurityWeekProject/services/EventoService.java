@@ -68,17 +68,17 @@ public class EventoService {
         return new PageImpl<>(listaDto);
     }
 
-    public void addUtente(long eventoId, long utenteId) {
+   /* public void addUtente(long eventoId, long utenteId) {
         Optional<Evento> evento = eventoRepo.findById(eventoId);
         Optional<Utente> utente = utenteRepo.findById(utenteId);
         if (evento.isPresent() && utente.isPresent()) {
             Evento eventoDaSalvare = evento.get();
-            eventoDaSalvare.setListaUtentiEvento(utente.get());
+            eventoDaSalvare.setListaUtentiEvento();
             eventoRepo.save(eventoDaSalvare);
         } else {
             throw new NotFoundException("Evento o Utente non presenti nel DB !");
         }
-    }
+    }*/
 
     public Evento dto_entity(EventoDto eventoDto) {
         Evento evento = new Evento();

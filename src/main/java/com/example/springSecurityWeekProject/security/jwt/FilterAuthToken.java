@@ -1,6 +1,7 @@
 package com.example.springSecurityWeekProject.security.jwt;
 
-import com.example.springSecurityWeekProject.security.services.UserDetailsServiceImpl;
+
+import com.example.springSecurityWeekProject.security.services.UtenteDetailsImplService;
 import org.springframework.beans.factory.annotation.Autowired;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -22,7 +23,7 @@ public class FilterAuthToken extends OncePerRequestFilter {
     JwtUtils utils;
 
     @Autowired
-    UserDetailsServiceImpl userDetailsService;
+    UtenteDetailsImplService userDetailsService;
 
     private String analizzaJwt(HttpServletRequest request) {
         String headAutenticazione = request.getHeader("Authorization");

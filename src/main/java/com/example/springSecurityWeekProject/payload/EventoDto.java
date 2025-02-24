@@ -28,7 +28,7 @@ public class EventoDto {
     private int numeroPostiDisponibili;
 
     @NotBlank(message = "questo campo è obbligatorio")
-    private long creatoreEvento_id;
+    private Utente creatoreEvento;
 }
 
 // da modificare i not blank message ⚠️⚠️⚠️⚠️⚠️

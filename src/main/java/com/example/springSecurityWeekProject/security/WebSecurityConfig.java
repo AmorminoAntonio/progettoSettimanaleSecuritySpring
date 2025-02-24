@@ -2,7 +2,7 @@ package com.example.springSecurityWeekProject.security;
 
 
 import com.example.springSecurityWeekProject.security.jwt.AuthEntryPoint;
-import com.example.springSecurityWeekProject.security.services.UserDetailsServiceImpl;
+import com.example.springSecurityWeekProject.security.services.UtenteDetailsImplService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,6 +10,7 @@ import org.springframework.security.authentication.dao.DaoAuthenticationProvider
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -23,7 +24,7 @@ import org.springframework.security.web.SecurityFilterChain;
 public class WebSecurityConfig {
 
     @Autowired
-    UserDetailsServiceImpl detailsImpl;
+    UtenteDetailsImplService detailsImpl;
 
     @Autowired
     AuthEntryPoint gestoreNOAuthorization;
@@ -57,12 +58,12 @@ public class WebSecurityConfig {
     // Gestione autorizzazioni sulle richieste (a livello controller / a livello di singoli servizi controller)
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.csrf(csrf -> csrf.disable())
+        http.csrf(AbstractHttpConfigurer::disable)
                 .exceptionHandling(exception -> exception.authenticationEntryPoint((AuthenticationEntryPoint) gestoreNOAuthorization))
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth ->
-                        auth.requestMatchers("/api/user/**").permitAll()
-                                .requestMatchers("/api/products/**").permitAll()
+                        auth.requestMatchers("/utente/**").permitAll()
+                                .requestMatchers("/evento/**").permitAll()
                                 .anyRequest().authenticated());
 
         http.authenticationProvider(authenticationProvider());

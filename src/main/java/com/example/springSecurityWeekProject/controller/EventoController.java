@@ -1,4 +1,4 @@
-package com.example.springSecurityWeekProject.controllers;
+package com.example.springSecurityWeekProject.controller;
 
 import com.example.springSecurityWeekProject.payload.EventoDto;
 import com.example.springSecurityWeekProject.services.EventoService;
@@ -30,7 +30,7 @@ public class EventoController {
         return eventoService.trovaEventoById(id);
     }
 
-    @PutMapping("/modifica/{id}")
+    /*@PutMapping("/modifica/{id}")
     public ResponseEntity<?> updateEvento(@RequestBody @Validated EventoDto eventoDto, BindingResult validation, @PathVariable long id) {
         if (validation.hasErrors()) {
             StringBuilder messaggioErrori = new StringBuilder("ERRORE DI VALIDAZIONE \n");
@@ -50,7 +50,7 @@ public class EventoController {
         eventoService.addUtente(viaggioId, dipendenteId);
         return new ResponseEntity<>("Dipendente (id:" + dipendenteId + ") aggiunto a viaggio (" + viaggioId + ")", HttpStatus.OK);
     }
-
+*/
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> deleteEvento(@PathVariable long id) {

@@ -1,7 +1,8 @@
 package com.example.springSecurityWeekProject.security.services;
 
-import com.example.springSecurityWeekProject.entities.Ruolo;
+
 import com.example.springSecurityWeekProject.entities.Utente;
+import com.example.springSecurityWeekProject.enumerated.Roles;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,7 +15,7 @@ import java.util.List;
 
 @Data
 @AllArgsConstructor
-public class UserDetailsImpl implements UserDetails {
+public class UtenteDetailsImpl implements UserDetails {
 
     // stiamo personalizzando i dettagli da inserire nel token JWT
 
@@ -24,18 +25,18 @@ public class UserDetailsImpl implements UserDetails {
 
     @JsonIgnore
     private String password;
-    private Ruolo ruolo;
+    private Roles ruolo;
 
 
-    public static UserDetailsImpl costruisciDettagli(Utente user) {
-        return new UserDetailsImpl(user.getUtente_id(), user.getUsername(), user.getEmail(), user.getPassword(), user.getRuolo());
+    public static UtenteDetailsImpl costruisciDettagli(Utente user) {
+        return new UtenteDetailsImpl(user.getUtente_id(), user.getUsername(), user.getEmail(), user.getPassword(), user.getRuolo());
     }
 
 
     // da modificare tramite visione della repo di EDO
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(ruolo.getTipoRuolo().name()));
+        return List.of(new SimpleGrantedAuthority(ruolo.name()));
     }
 
     @Override
