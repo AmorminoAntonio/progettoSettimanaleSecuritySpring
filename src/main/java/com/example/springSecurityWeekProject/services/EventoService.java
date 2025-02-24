@@ -73,7 +73,7 @@ public class EventoService {
         Optional<Utente> utente = utenteRepo.findById(utenteId);
         if (evento.isPresent() && utente.isPresent()) {
             Evento eventoDaSalvare = evento.get();
-            eventoDaSalvare.setUtentePerEvento(utente.get());
+            eventoDaSalvare.setListaUtentiEvento(utente.get());
             eventoRepo.save(eventoDaSalvare);
         } else {
             throw new NotFoundException("Evento o Utente non presenti nel DB !");
