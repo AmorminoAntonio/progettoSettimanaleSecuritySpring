@@ -45,7 +45,6 @@ public class EventoService {
     }
 
 
-
     public String rimuoviEvento(long id) {
         Optional<Evento> eventoTrovato = eventoRepo.findById(id);
         if (eventoTrovato.isPresent()) {
@@ -87,7 +86,7 @@ public class EventoService {
         evento.setDescrizioneEvento(eventoDto.getDescrizioneEvento());
         evento.setLuogoEvento(eventoDto.getLuogoEvento());
         evento.setNumeroPostiDisponibili(eventoDto.getNumeroPostiDisponibili());
-        evento.setCreatoreEvento(eventoDto.getCreatoreEvento());
+        evento.setCreatoreEvento_id(eventoDto.getCreatoreEvento());
         return evento;
     }
 
@@ -99,7 +98,7 @@ public class EventoService {
         eventoDto.setDescrizioneEvento(evento.getDescrizioneEvento());
         eventoDto.setLuogoEvento(evento.getLuogoEvento());
         eventoDto.setNumeroPostiDisponibili(evento.getNumeroPostiDisponibili());
-        eventoDto.setCreatoreEvento(evento.getCreatoreEvento());
+        eventoDto.setCreatoreEvento(evento.getCreatoreEvento_id());
         return eventoDto;
     }
 }

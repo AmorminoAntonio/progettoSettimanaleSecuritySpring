@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -26,20 +27,33 @@ public class UtenteService {
     @Autowired
     UtenteRepo utenteRepo;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
-    public String insertUtente(RegistrazioneRequest dto) throws UsernameDuplicated, EmailDuplicated {
-        controlloDuplicati(dto.getUsername(), dto.getEmail());
+    public String insertUtente(RegistrazioneRequest nuovoUtente) throws UsernameDuplicated, EmailDuplicated {
+        // Verifica se username o email esistono già
+        if (utenteRepo.existsByUsername(nuovoUtente.getUsername())) {
+            throw new UsernameDuplicated("username già esistente");
+        }
+        if (utenteRepo.existsByEmail(nuovoUtente.getEmail())) {
+            throw new EmailDuplicated("email già esistente");
+        }
 
-        // Gestione dei ruoli --> Set<String> -> Set<Ruolo>
-        // Se i ruoli == null -> Impostiamo il ruolo ROLE_USER
+        // Crea il nuovo utente
+        Utente utente = new Utente();
+        utente.setUsername(nuovoUtente.getUsername());
+        utente.setEmail(nuovoUtente.getEmail());
+        utente.setPassword(passwordEncoder.encode(nuovoUtente.getPassword()));  // Criptazione della password
+        utente.setNome(nuovoUtente.getNome());
+        utente.setCognome(nuovoUtente.getCognome());
+        utente.setRuolo(Roles.UTENTE);
 
-        // Travaso dei dati da RegistrazioneRequest -> Utente
-        Utente user = dto_entity(dto);
-        user = utenteRepo.save(user);
+        // Salva l'utente
+        utenteRepo.save(utente);
 
-        long id = utenteRepo.save(user).getUtente_id();
-        return "L'utente " + user.getUsername() + " con id " + id + " è stato inserito correttamente";
+        return "Utente registrato con successo!";
     }
+
 
     // controllo duplicato Username e Password
     public void controlloDuplicati(String username, String email) throws UsernameDuplicated, EmailDuplicated {
@@ -119,6 +133,7 @@ public class UtenteService {
         user.setCognome(registrazioneRequest.getCognome());
         user.setUsername(registrazioneRequest.getUsername());
         user.setPassword(registrazioneRequest.getPassword());
+        user.setEmail(registrazioneRequest.getEmail());
         user.setRuolo(Roles.valueOf(registrazioneRequest.getRuolo()));
         return user;
     }

@@ -21,8 +21,7 @@ public class UtenteDto {
     @NotBlank(message = "questo campo è obbligatorio")
     private String password;
 
-    @Email(message = "la email insierita non è valida.")
-    @NotBlank(message = "questo campo è obbligatorio")
+    @Email(message = "la email inserita non è valida.")
     private String email;
 
     private String ruolo;
