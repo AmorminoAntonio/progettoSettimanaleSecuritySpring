@@ -62,7 +62,7 @@ public class WebSecurityConfig {
                 .exceptionHandling(exception -> exception.authenticationEntryPoint((AuthenticationEntryPoint) gestoreNOAuthorization))
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth ->
-                        auth.requestMatchers("/utente/**").permitAll()
+                        auth.requestMatchers("/utente/register").permitAll()
                                 .requestMatchers("/evento/**").permitAll()
                                 .anyRequest().authenticated());
 

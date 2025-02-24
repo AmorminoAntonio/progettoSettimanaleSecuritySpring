@@ -36,10 +36,10 @@ public class Evento {
     private int numeroPostiDisponibili;
 
     @OneToMany
-    @JoinColumn(name = "evento_id")
+    @JoinColumn(name = "utente_id")
     private List<Utente> listaUtentiEvento;
 
     @ManyToOne
-    @JoinColumn(name = "creatore_evento_id")
+    @JoinColumn(name = "creatore_evento")
     private Utente creatoreEvento;
 }

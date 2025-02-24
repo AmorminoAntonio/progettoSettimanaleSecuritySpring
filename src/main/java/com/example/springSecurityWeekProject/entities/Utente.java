@@ -40,6 +40,6 @@ public class Utente {
     @OneToMany(mappedBy = "evento_id")
     private List<Evento> eventoList;
 
-    @OneToMany(mappedBy = "utente")
+    @OneToMany(mappedBy = "prenotazione_id")
     private List<Prenotazione> prenotazioneList;
 }

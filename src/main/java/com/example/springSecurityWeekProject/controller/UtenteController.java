@@ -25,7 +25,7 @@ public class UtenteController {
     UtenteService utenteService;
 
 
-    @PostMapping("/new")
+    @PostMapping("/register")
     public ResponseEntity<String> inserisciUtente(@Validated @RequestBody RegistrazioneRequest nuovoUtente, BindingResult validazione) {
 
         try {
@@ -41,7 +41,7 @@ public class UtenteController {
 
             }
 
-            String messaggio = utenteService.inserisciUtente(nuovoUtente);
+            String messaggio = utenteService.insertUtente(nuovoUtente);
             return new ResponseEntity<>(messaggio, HttpStatus.OK);
         } catch (UsernameDuplicated e) {
             return new ResponseEntity<>("Username già utilizzato", HttpStatus.BAD_REQUEST);

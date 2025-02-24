@@ -8,16 +8,15 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
-@Entity
+@Entity(name = "prenotazioni")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "utenti")
 public class Prenotazione {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_prenotazione;
+    private Long prenotazione_id;
 
     @Column(nullable = false)
     private LocalDate dataPrenotazione;

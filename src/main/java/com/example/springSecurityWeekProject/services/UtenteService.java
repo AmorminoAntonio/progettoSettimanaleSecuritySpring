@@ -27,10 +27,18 @@ public class UtenteService {
     UtenteRepo utenteRepo;
 
 
-    public String inserisciUtente(RegistrazioneRequest utenteDto) {
-        Utente user = dto_entity(utenteDto);
+    public String insertUtente(RegistrazioneRequest dto) throws UsernameDuplicated, EmailDuplicated {
+        controlloDuplicati(dto.getUsername(), dto.getEmail());
+
+        // Gestione dei ruoli --> Set<String> -> Set<Ruolo>
+        // Se i ruoli == null -> Impostiamo il ruolo ROLE_USER
+
+        // Travaso dei dati da RegistrazioneRequest -> Utente
+        Utente user = dto_entity(dto);
         user = utenteRepo.save(user);
-        return "nuovo utente inserito: " + user;
+
+        long id = utenteRepo.save(user).getUtente_id();
+        return "L'utente " + user.getUsername() + " con id " + id + " è stato inserito correttamente";
     }
 
     // controllo duplicato Username e Password
