@@ -20,5 +20,3 @@ public class UtenteDto {
 
     private String ruolo;
 }
-
-// da modificare i not blank message ⚠️⚠️⚠️⚠️⚠️

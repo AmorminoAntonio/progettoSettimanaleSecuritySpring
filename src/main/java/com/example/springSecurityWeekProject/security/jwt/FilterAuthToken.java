@@ -1,4 +1,3 @@
-/*
 package com.example.springSecurityWeekProject.security.jwt;
 
 import com.example.springSecurityWeekProject.security.services.UserDetailsServiceImpl;
@@ -29,7 +28,7 @@ public class FilterAuthToken extends OncePerRequestFilter {
         String headAutenticazione = request.getHeader("Authorization");
 
         // 1. Controllo sulla presenza di testo nel valore di Authorization
-        // 2  Controlla se il valore recuperato inizia con "Bearer "
+        // 2 Controlla se il valore recuperato inizia con "Bearer"
         // Bearer f7365dj38jkso34936djh73hd73
         if (StringUtils.hasText(headAutenticazione) && (headAutenticazione.startsWith("Bearer "))) {
             // RECUPERO LA SOTTOSTRINGA ESCLUDENDO LA PRIMA SEQUENZA STANDARD
@@ -75,4 +74,3 @@ public class FilterAuthToken extends OncePerRequestFilter {
 
     }
 }
-*/

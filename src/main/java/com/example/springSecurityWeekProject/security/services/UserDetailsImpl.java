@@ -1,4 +1,3 @@
-/*
 package com.example.springSecurityWeekProject.security.services;
 
 import com.example.springSecurityWeekProject.entities.Utente;
@@ -29,7 +28,7 @@ public class UserDetailsImpl implements UserDetails {
 
 
     public static UserDetailsImpl costruisciDettagli(Utente user) {
-        return new UserDetailsImpl(user.getUtente_id(), user.getUsername(), user.getEmail(), user.getPassword(), user.getRuolo());
+        return new UserDetailsImpl(user.getUtente_id(), user.getUsername(), user.getEmail(), user.getPassword(), user.getRuolo().getName());
     }
 
 
@@ -69,4 +68,3 @@ public class UserDetailsImpl implements UserDetails {
         return true;
     }
 }
-*/

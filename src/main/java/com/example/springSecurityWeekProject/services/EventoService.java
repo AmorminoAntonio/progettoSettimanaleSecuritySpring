@@ -27,58 +27,6 @@ public class EventoService {
     @Autowired
     UtenteRepo utenteRepo;
 
-    /*public String inserisciEvento(EventoDto eventoDto) {
-        Evento evento = dto_entity(eventoDto);
-        evento = eventoRepo.save(evento);
-        return "nuovo evento inserito: " + evento;
-    }
-
-
-    public EventoDto trovaEventoById(long id) {
-        Optional<Evento> eventoTrovato = eventoRepo.findById(id);
-
-        if (eventoTrovato.isPresent()) {
-            return entity_dto(eventoTrovato.get());
-        } else {
-            throw new NotFoundException("Nessun evento trovato con l'id: " + id);
-        }
-    }
-
-
-
-    public String rimuoviEvento(long id) {
-        Optional<Evento> eventoTrovato = eventoRepo.findById(id);
-        if (eventoTrovato.isPresent()) {
-            eventoRepo.delete(eventoTrovato.get());
-            return "evento con id: " + id + " eliminato con successo!";
-        } else {
-            throw new NotFoundException("Errore nel delete! Nessun evento trovato con id: " + id);
-        }
-
-    }
-
-    public Page<EventoDto> getAllEventi(Pageable page) {
-        Page<Evento> listaEventi = eventoRepo.findAll(page);
-        List<EventoDto> listaDto = new ArrayList<>();
-
-        for (Evento evento : listaEventi.getContent()) {
-            EventoDto dto = entity_dto(evento);
-            listaDto.add(dto);
-        }
-        return new PageImpl<>(listaDto);
-    }
-
-    public void addUtente(long eventoId, long utenteId) {
-        Optional<Evento> evento = eventoRepo.findById(eventoId);
-        Optional<Utente> utente = utenteRepo.findById(utenteId);
-        if (evento.isPresent() && utente.isPresent()) {
-            Evento eventoDaSalvare = evento.get();
-            eventoDaSalvare.setListaUtentiEvento(utente);
-            eventoRepo.save(eventoDaSalvare);
-        } else {
-            throw new NotFoundException("Evento o Utente non presenti nel DB !");
-        }
-    }*/
 
 
 }

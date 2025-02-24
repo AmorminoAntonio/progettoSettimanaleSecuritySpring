@@ -1,4 +1,3 @@
-/*
 package com.example.springSecurityWeekProject.security.services;
 
 import com.example.springSecurityWeekProject.entities.Utente;
@@ -27,4 +26,3 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         return UserDetailsImpl.costruisciDettagli(user);
     }
 }
-*/
