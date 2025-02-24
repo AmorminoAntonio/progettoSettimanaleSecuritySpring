@@ -28,18 +28,13 @@ public class Utente {
     @Column(nullable = false, unique = true)
     private String username;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String password;
 
-    @Column(nullable = false, unique = true)
-    private String email;
-
-    @ManyToOne
-    private Ruolo ruolo;
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private Roles ruoloUtente;
 
     @OneToMany(mappedBy = "evento_id")
-    private List<Evento> eventoList;
-
-    @OneToMany(mappedBy = "prenotazione_id")
-    private List<Prenotazione> prenotazioneList;
+    private List<Evento> eventoList = new ArrayList<>();
 }

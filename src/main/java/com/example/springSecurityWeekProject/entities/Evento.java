@@ -37,7 +37,7 @@ public class Evento {
 
     @ManyToOne
     @JoinColumn
-    private List<Utente> listaUtentiEvento;
+    private Utente utentePerEvento;
 
     @ManyToOne
     @JoinColumn(name = "creatore_evento_id")

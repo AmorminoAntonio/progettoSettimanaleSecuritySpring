@@ -1,12 +1,8 @@
 package com.example.springSecurityWeekProject.services;
 
 import com.example.springSecurityWeekProject.entities.Utente;
-import com.example.springSecurityWeekProject.exceptions.EmailDuplicated;
 import com.example.springSecurityWeekProject.exceptions.NotFoundException;
-import com.example.springSecurityWeekProject.exceptions.UsernameDuplicated;
 import com.example.springSecurityWeekProject.payload.UtenteDto;
-import com.example.springSecurityWeekProject.payload.request.RegistrazioneRequest;
-import com.example.springSecurityWeekProject.repositories.RuoloRepo;
 import com.example.springSecurityWeekProject.repositories.UtenteRepo;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +10,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
 
 
 @Service
@@ -26,26 +22,10 @@ public class UtenteService {
     @Autowired
     UtenteRepo utenteRepo;
 
-    @Autowired
-    RuoloRepo ruoloRepo;
-
-    public String inserisciUtente(RegistrazioneRequest registrazioneRequest) {
-        Utente user = dto_entity(registrazioneRequest);
+    public String inserisciUtente(UtenteDto utenteDto) {
+        Utente user = dto_entity(utenteDto);
         user = utenteRepo.save(user);
         return "nuovo utente inserito: " + user;
-    }
-
-    // controllo duplicato Username e Password
-    public void controlloDuplicati(String username, String email) throws UsernameDuplicated, EmailDuplicated {
-
-        if (utenteRepo.existsByUsername(username)) {
-            throw new UsernameDuplicated("Username gia esistente nel sistema");
-        }
-
-        if (utenteRepo.existsByEmail(email)) {
-            throw new EmailDuplicated("Email gia presente nel sistema");
-        }
-
     }
 
 
@@ -113,7 +93,7 @@ public class UtenteService {
         user.setCognome(utenteDto.getCognome());
         user.setUsername(utenteDto.getUsername());
         user.setPassword(utenteDto.getPassword());
-        user.setRuolo(utenteDto.getRuolo());
+        user.setRuoloUtente(utenteDto.getRuoloUtente());
         return user;
     }
 
@@ -124,7 +104,7 @@ public class UtenteService {
         userDto.setCognome(utente.getCognome());
         userDto.setUsername(utente.getUsername());
         userDto.setPassword(utente.getPassword());
-        userDto.setRuolo(utente.getRuolo());
+        userDto.setRuoloUtente(utente.getRuoloUtente());
         return userDto;
     }
 }
